@@ -1,7 +1,7 @@
-// form-bridge.js — Gigantes de Azapa Salta 2026 — FOTOS LOCALES + MENU CON ALBUM
+// form-bridge.js — Gigantes de Azapa · Club 2030 / Santiago 2026
 const GIGANTES = {
   LOGO: "LOGO GIGANTES.jpeg",
-  BASE: "https://gigantesazapasalta2026-sudo.github.io/gigantes-salta-2026-app/",
+  BASE: new URL("./", window.location.href).href,
   FOTOS: {
     video: "niños llegando a jugar.mov",
     m10m12: "m10m12.jpg",
@@ -21,7 +21,7 @@ const GIGANTES = {
     "actividades":"tercer","bingos":"fogata","aportes":"estadio","sponsors":"playa",
     "avance":"estadio","galeria_club":"entrenadores","itinerario":"ninos2",
     "merchandising":"m10m12","directiva":"entrenadores","album_equipo":"m10m12",
-    "index":"ninos2","default":"ninos2"
+    "index":"ninos2","santiago":"estadio","grupos":"tercer","directiva_santiago":"entrenadores","default":"ninos2"
   }
 };
 
@@ -33,25 +33,25 @@ function injectTopbar(){
   const B=GIGANTES.BASE;
   const bar=document.createElement('header');
   bar.id='gb-topbar';
-  bar.innerHTML=`<a class="gb-brand" href="${B}index.html"><img src="LOGO GIGANTES.jpeg" alt="Gigantes de Azapa" onerror="this.src='https://placehold.co/42/f36b21/fff?text=G'"><div><small>Gigantes de Azapa</small><span>Salta 2026</span></div></a><button class="gb-btn" onclick="document.getElementById('gb-drawer').classList.toggle('open')">☰</button>`;
+  bar.innerHTML=`<a class="gb-brand" href="${B}index.html"><img src="LOGO GIGANTES.jpeg" alt="Gigantes de Azapa" onerror="this.src='https://placehold.co/42/f36b21/fff?text=G'"><div><small>Gigantes de Azapa</small><span>Club 2030 · Santiago 2026</span></div></a><button class="gb-btn" onclick="document.getElementById('gb-drawer').classList.toggle('open')">☰</button>`;
   document.body.insertBefore(bar,document.body.firstChild);
   const nav=document.createElement('nav');
   nav.id='gb-drawer';
   nav.innerHTML=`<div class="gb-dh"><strong>Menú</strong><button class="gb-x" onclick="document.getElementById('gb-drawer').classList.remove('open')">✕</button></div>
+    <a href="${B}index.html">🏠 Portada</a>
+    <a href="${B}santiago.html">✈️ Santiago 2026</a>
+    <a href="${B}actividades.html">🌭 Actividades</a>
+    <a href="${B}grupos.html">👥 Grupos A–D</a>
     <a href="${B}inscripcion.html">🏉 Inscribir jugador</a>
-    <a href="${B}album_equipo.html">⭐ Álbum del equipo</a>
+    <a href="${B}pasajes.html">✈️ Pasajes</a>
     <a href="${B}documentos_carga.html">📄 Subir documentos</a>
     <a href="${B}mi_estado.html">🔍 Mi estado</a>
-    <a href="${B}itinerario.html">🗓 Itinerario</a>
-    <a href="${B}actividades.html">🤝 Actividades</a>
-    <a href="${B}aportes.html">💛 Hacer un aporte</a>
-    <a href="${B}merchandising.html">👕 Merchandising</a>
-    <a href="${B}bingos.html">🎰 Bingos</a>
-    <a href="${B}sponsors.html">🏢 Sponsors</a>
-    <a href="${B}avance.html">📊 Avance de meta</a>
+    <a href="${B}album_equipo.html">⭐ Álbum del equipo</a>
     <a href="${B}galeria_club.html">📸 Galería</a>
-    <a href="${B}directiva.html">🔐 Directiva</a>
-    <a href="${B}index.html">🏠 Portada</a>`;
+    <a href="${B}aportes.html">💛 Aportes</a>
+    <a href="${B}merchandising.html">👕 Merchandising</a>
+    <a href="${B}sponsors.html">🏢 Sponsors</a>
+    <a href="${B}directiva_santiago.html">🔐 Directiva Santiago</a>`
   document.body.appendChild(nav);
   document.addEventListener('click',e=>{const d=document.getElementById('gb-drawer');if(d&&!d.contains(e.target)&&!e.target.classList.contains('gb-btn'))d.classList.remove('open');});
 }
